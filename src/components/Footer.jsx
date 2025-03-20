@@ -102,19 +102,19 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <FaMapMarkerAlt className="text-primary mt-1" size={20} />
                 <span className="text-base-content/70">
-                  Merkez Ofis, İstanbul, Türkiye
+                  Merkez Ofis, İzmir, Türkiye
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <FaPhoneAlt className="text-primary" size={18} />
-                <a href="tel:+902121234567" className="text-base-content/70 hover:text-primary transition-colors">
-                  +90 (212) 123 45 67
+                <a href="tel:+905555555555" className="text-base-content/70 hover:text-primary transition-colors">
+                  +90 (555) 555 55 55
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <FaEnvelope className="text-primary" size={18} />
                 <a href="mailto:info@gladius.com" className="text-base-content/70 hover:text-primary transition-colors">
-                  info@gladius.com
+                  info@gladius-ra.com
                 </a>
               </li>
             </ul>

@@ -209,192 +209,195 @@ const Navbar = () => {
       <div className="fixed top-0 left-0 right-0 z-50">
         <div className={`duration-300 backdrop-blur-md ${(isMenuOpen || isDropdownOpen || isEducationOpen) ? 'bg-base-100' : 'bg-base-300/50'}`}>
           <div className="container mx-auto">
-            <div className="navbar relative">
-              <div className="flex-1">
-                <Link to="/" className="text-2xl ps-2 font-bold text-base-content">
-                  GLADIUS
-                </Link>
-              </div>
+            <div className="navbar relative flex items-center justify-between">
+
+              <Link to="/" className="font-bold text-base-content w-max">
+                <img src="./logo.png" alt="logo" className='w-32' />
+              </Link>
+
 
               {/* Desktop Menu */}
-              <div className="hidden lg:flex">
-                <ul className="flex items-center gap-8 text-base-content">
-                  <li className='group'>
-                    <Link to="/" className="hover:text-primary transition-colors">
-                      Ana Sayfa
-                    </Link>
-                    <span className='w-0 group-hover:w-full h-0.5 bg-primary block transition-all duration-300'></span>
-                  </li>
+              <div className='flex justify-end items-center'>
+                <div className="hidden lg:flex">
+                  <ul className="flex items-center gap-8 text-base-content">
+                    <li className='group'>
+                      <Link to="/" className="hover:text-primary duration-300">
+                        Ana Sayfa
+                      </Link>
+                      <span className='w-0 group-hover:w-full h-0.5 bg-primary block transition-all duration-300'></span>
+                    </li>
 
-                  {/* Custom Dropdown */}
-                  <li ref={dropdownRef} className='group/parent'>
-                    <button
-                      onClick={() => {
-                        setIsDropdownOpen(!isDropdownOpen);
-                        setIsEducationOpen(false);
-                      }}
-                      className="flex cursor-pointer items-center gap-1 hover:text-primary transition-colors"
-                    >
-                      <span>Hizmetler</span>
-                      <svg
-                        className={`w-4 h-4 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                    {/* Custom Dropdown */}
+                    <li ref={dropdownRef} className='group/parent'>
+                      <button
+                        onClick={() => {
+                          setIsDropdownOpen(!isDropdownOpen);
+                          setIsEducationOpen(false);
+                        }}
+                        className="flex cursor-pointer items-center gap-1 hover:text-primary duration-100"
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
-                    <span className='w-0 group-hover/parent:w-full h-0.5 bg-primary block transition-all duration-300'></span>
-                    {/* Dropdown Menu */}
-                    <div
-                      className={`absolute top-full left-0  w-full bg-base-100 border-t-primary border-t-2 rounded-b-xl shadow-xl transform transition-all duration-200 origin-top 
+                        <span>Hizmetler</span>
+                        <svg
+                          className={`w-4 h-4 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                      <span className='w-0 group-hover/parent:w-full h-0.5 bg-primary block transition-all duration-300'></span>
+                      {/* Dropdown Menu */}
+                      <div
+                        className={`absolute top-full left-0  w-full bg-base-100 border-t-primary border-t-2 rounded-b-xl shadow-xl transform transition-all duration-200 origin-top 
                         ${isDropdownOpen
-                          ? 'opacity-100 scale-100 translate-y-0'
-                          : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'}`}
-                    >
-                      <div className="p-6 grid grid-cols-3 gap-6">
-                        {services.map((service) => (
-                          <Link
-                            key={service.title}
-                            to={`/hizmetler${service.link}`}
-                            className="group cursor-pointer"
-                          >
-                            <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-base-200 transition-colors">
-                              <span className="text-primary">{service.icon}</span>
-                              <div >
-                                <h3 className="font-semibold text-base-content group-hover:text-primary transition-colors">
-                                  {service.title}
-                                </h3>
-                                <p className="text-sm text-base-content/70 mt-1">
-                                  {service.description}
-                                </p>
-                                <ul className="mt-2 space-y-1">
-                                  {service.subServices.map((subService) => (
-                                    <li
-                                      key={subService}
-                                      className="text-sm  text-base-content/70 hover:text-primary transition-colors"
-                                    >
-                                      • {subService}
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </li>
-
-                  {/* Education Dropdown */}
-                  <li ref={educationRef} className='group/parent'>
-                    <button
-                      onClick={() => {
-                        setIsEducationOpen(!isEducationOpen);
-                        setIsDropdownOpen(false);
-                      }}
-                      className="flex cursor-pointer items-center gap-1 hover:text-primary transition-colors"
-                    >
-                      <span>Eğitimler</span>
-                      <svg
-                        className={`w-4 h-4 transition-transform duration-200 ${isEducationOpen ? 'rotate-180' : ''}`}
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                            ? 'opacity-100 scale-100 translate-y-0'
+                            : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'}`}
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
-                    <span className='w-0 group-hover/parent:w-full h-0.5 bg-primary block transition-all duration-300'></span>
-                    {/* Education Dropdown Menu */}
-                    <div
-                      className={`absolute top-full left-0  w-full bg-base-100 border-t-primary border-t-2 rounded-b-xl shadow-xl transform transition-all duration-200 origin-top 
-                        ${isEducationOpen
-                          ? 'opacity-100 scale-100 translate-y-0'
-                          : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'}`}
-                    >
-                      <div className="p-6 grid grid-cols-3 justify-center h-full gap-6">
-                        {education.map((edu) => (
-                          <Link to={`/egitimler${edu.link}`} key={edu.title} className="group cursor-pointer block h-full">
-                            <div className="flex items-start h-full gap-4 p-4 rounded-lg hover:bg-base-200 transition-colors">
-                              <span className="text-2xl">{edu.icon}</span>
-                              <div>
-                                <h3 className="font-semibold text-base-content group-hover:text-primary transition-colors">
-                                  {edu.title}
-                                </h3>
-                                <p className="text-sm text-base-content/70 mt-1">
-                                  {edu.description}
-                                </p>
-                                <ul className="mt-2 space-y-1">
-                                  {edu.subServices.map((sub) => (
-                                    <li
-                                      key={sub.name}
-                                      className="text-sm text-base-content/70 hover:text-primary transition-colors"
-                                    >
-                                      • {sub.name}
-                                    </li>
-                                  ))}
-                                </ul>
+                        <div className="p-6 grid grid-cols-3 gap-6">
+                          {services.map((service) => (
+                            <Link
+                              key={service.title}
+                              to={`/hizmetler${service.link}`}
+                              className="group cursor-pointer"
+                            >
+                              <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-base-200 transition-colors">
+                                <span className="text-primary">{service.icon}</span>
+                                <div >
+                                  <h3 className="font-semibold text-base-content group-hover:text-primary transition-colors">
+                                    {service.title}
+                                  </h3>
+                                  <p className="text-sm text-base-content/70 mt-1">
+                                    {service.description}
+                                  </p>
+                                  <ul className="mt-2 space-y-1">
+                                    {service.subServices.map((subService) => (
+                                      <li
+                                        key={subService}
+                                        className="text-sm  text-base-content/70 hover:text-primary transition-colors"
+                                      >
+                                        • {subService}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
                               </div>
-                            </div>
-                          </Link>
-                        ))}
+                            </Link>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  </li>
+                    </li>
 
-                  <li className='group'>
-                    <Link to="/projeler" className="hover:text-primary transition-colors">
-                      Projeler
-                    </Link>
-                    <span className='w-0 group-hover:w-full h-0.5 bg-primary block transition-all duration-300'></span>
-                  </li>
-                  <li className='group'>
-                    <Link to="/hakkimizda" className="hover:text-primary transition-colors">
-                      Hakkımızda
-                    </Link>
-                    <span className='w-0 group-hover:w-full h-0.5 bg-primary block transition-all duration-300'></span>
-                  </li>
+                    {/* Education Dropdown */}
+                    <li ref={educationRef} className='group/parent'>
+                      <button
+                        onClick={() => {
+                          setIsEducationOpen(!isEducationOpen);
+                          setIsDropdownOpen(false);
+                        }}
+                        className="flex cursor-pointer items-center gap-1 hover:text-primary duration-100"
+                      >
+                        <span>Eğitimler</span>
+                        <svg
+                          className={`w-4 h-4 transition-transform duration-200 ${isEducationOpen ? 'rotate-180' : ''}`}
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                      <span className='w-0 group-hover/parent:w-full h-0.5 bg-primary block transition-all duration-300'></span>
+                      {/* Education Dropdown Menu */}
+                      <div
+                        className={`absolute top-full left-0  w-full bg-base-100 border-t-primary border-t-2 rounded-b-xl shadow-xl transform transition-all duration-200 origin-top 
+                        ${isEducationOpen
+                            ? 'opacity-100 scale-100 translate-y-0'
+                            : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'}`}
+                      >
+                        <div className="p-6 grid grid-cols-3 justify-center h-full gap-6">
+                          {education.map((edu) => (
+                            <Link to={`/egitimler${edu.link}`} key={edu.title} className="group cursor-pointer block h-full">
+                              <div className="flex items-start h-full gap-4 p-4 rounded-lg hover:bg-base-200 transition-colors">
+                                <span className="text-2xl">{edu.icon}</span>
+                                <div>
+                                  <h3 className="font-semibold text-base-content group-hover:text-primary transition-colors">
+                                    {edu.title}
+                                  </h3>
+                                  <p className="text-sm text-base-content/70 mt-1">
+                                    {edu.description}
+                                  </p>
+                                  <ul className="mt-2 space-y-1">
+                                    {edu.subServices.map((sub) => (
+                                      <li
+                                        key={sub.name}
+                                        className="text-sm text-base-content/70 hover:text-primary transition-colors"
+                                      >
+                                        • {sub.name}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </li>
 
-                  <li className='group'>
-                    <Link to="/iletisim" className="hover:text-primary transition-colors">
-                      İletişim
-                    </Link>
-                    <span className='w-0 group-hover:w-full h-0.5 bg-primary block transition-all duration-300'></span>
-                  </li>
+                    <li className='group'>
+                      <Link to="/projeler" className="hover:text-primary duration-300">
+                        Projeler
+                      </Link>
+                      <span className='w-0 group-hover:w-full h-0.5 bg-primary block transition-all duration-300'></span>
+                    </li>
+                    <li className='group'>
+                      <Link to="/hakkimizda" className="hover:text-primary duration-300">
+                        Hakkımızda
+                      </Link>
+                      <span className='w-0 group-hover:w-full h-0.5 bg-primary block transition-all duration-300'></span>
+                    </li>
 
-                </ul>
-              </div>
+                    <li className='group'>
+                      <Link to="/iletisim" className="hover:text-primary duration-300">
+                        İletişim
+                      </Link>
+                      <span className='w-0 group-hover:w-full h-0.5 bg-primary block transition-all duration-300'></span>
+                    </li>
+
+                  </ul>
+                </div>
 
 
-              {/* Mobile Menu Button */}
-              <div className="lg:hidden">
-                <button
-                  ref={buttonRef}
-                  className="p-2"
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                >
-                  <div className="w-6 h-6 flex flex-col justify-center items-center">
-                    <span className={`bg-current block transition-all duration-300 ease-out 
+                {/* Mobile Menu Button */}
+                <div className="lg:hidden">
+                  <button
+                    ref={buttonRef}
+                    className="p-2"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  >
+                    <div className="w-6 h-6 flex flex-col justify-center items-center">
+                      <span className={`bg-current block transition-all duration-300 ease-out 
                       h-0.5 w-6 rounded-sm ${isMenuOpen ?
-                        'rotate-45 translate-y-1' : '-translate-y-0.5'
-                      }`} />
-                    <span className={`bg-current block transition-all duration-300 ease-out 
+                          'rotate-45 translate-y-1' : '-translate-y-0.5'
+                        }`} />
+                      <span className={`bg-current block transition-all duration-300 ease-out 
                       h-0.5 w-6 rounded-sm my-0.5 ${isMenuOpen ?
-                        'opacity-0' : 'opacity-100'
-                      }`} />
-                    <span className={`bg-current block transition-all duration-300 ease-out 
+                          'opacity-0' : 'opacity-100'
+                        }`} />
+                      <span className={`bg-current block transition-all duration-300 ease-out 
                       h-0.5 w-6 rounded-sm ${isMenuOpen ?
-                        '-rotate-45 -translate-y-1' : 'translate-y-0.5'
-                      }`} />
-                  </div>
-                </button>
+                          '-rotate-45 -translate-y-1' : 'translate-y-0.5'
+                        }`} />
+                    </div>
+                  </button>
 
+                </div>
+                <div className='md:ms-5 ms-2 h-6 w-6'>
+                  <SunMoonIcon />
+                </div>
               </div>
-              <div className='md:ms-5 ms-2 h-6 w-6'>
-                <SunMoonIcon />
-              </div>
+
             </div>
           </div>
         </div>
