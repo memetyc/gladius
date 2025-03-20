@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router';
 import { GiRopeBridge, GiOilPump, GiCrane, GiMountainRoad, GiWindTurbine, GiLifeJacket } from 'react-icons/gi';
 import { FaWind, FaMountain, FaShieldAlt, FaIndustry, FaAmbulance } from 'react-icons/fa';
+import SunMoonIcon from './SunMoon';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,25 +33,25 @@ const Navbar = () => {
       setIsDropdownOpen(false);
       setIsEducationOpen(false);
     }
-    
+
 
     const handleClickOutside = (event) => {
-      if(isDropdownOpen || isEducationOpen || isMenuOpen){
-      console.log('Click outside detected:', event.target);
-      
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsDropdownOpen(false);
-      }
-      if (educationRef.current && !educationRef.current.contains(event.target)) {
-        setIsEducationOpen(false);
-      }
-      if (isMenuOpen && 
-          menuRef.current && 
+      if (isDropdownOpen || isEducationOpen || isMenuOpen) {
+        console.log('Click outside detected:', event.target);
+
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+          setIsDropdownOpen(false);
+        }
+        if (educationRef.current && !educationRef.current.contains(event.target)) {
+          setIsEducationOpen(false);
+        }
+        if (isMenuOpen &&
+          menuRef.current &&
           !menuRef.current.contains(event.target) &&
           !buttonRef.current.contains(event.target)) {
-        setIsMenuOpen(false);
+          setIsMenuOpen(false);
+        }
       }
-    }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -224,7 +225,7 @@ const Navbar = () => {
                     </Link>
                     <span className='w-0 group-hover:w-full h-0.5 bg-primary block transition-all duration-300'></span>
                   </li>
-                  
+
                   {/* Custom Dropdown */}
                   <li ref={dropdownRef} className='group/parent'>
                     <button
@@ -248,8 +249,8 @@ const Navbar = () => {
                     {/* Dropdown Menu */}
                     <div
                       className={`absolute top-full left-0  w-full bg-base-100 border-t-primary border-t-2 rounded-b-xl shadow-xl transform transition-all duration-200 origin-top 
-                        ${isDropdownOpen 
-                          ? 'opacity-100 scale-100 translate-y-0' 
+                        ${isDropdownOpen
+                          ? 'opacity-100 scale-100 translate-y-0'
                           : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'}`}
                     >
                       <div className="p-6 grid grid-cols-3 gap-6">
@@ -270,7 +271,7 @@ const Navbar = () => {
                                 </p>
                                 <ul className="mt-2 space-y-1">
                                   {service.subServices.map((subService) => (
-                                    <li 
+                                    <li
                                       key={subService}
                                       className="text-sm  text-base-content/70 hover:text-primary transition-colors"
                                     >
@@ -309,8 +310,8 @@ const Navbar = () => {
                     {/* Education Dropdown Menu */}
                     <div
                       className={`absolute top-full left-0  w-full bg-base-100 border-t-primary border-t-2 rounded-b-xl shadow-xl transform transition-all duration-200 origin-top 
-                        ${isEducationOpen 
-                          ? 'opacity-100 scale-100 translate-y-0' 
+                        ${isEducationOpen
+                          ? 'opacity-100 scale-100 translate-y-0'
                           : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'}`}
                     >
                       <div className="p-6 grid grid-cols-3 justify-center h-full gap-6">
@@ -327,7 +328,7 @@ const Navbar = () => {
                                 </p>
                                 <ul className="mt-2 space-y-1">
                                   {edu.subServices.map((sub) => (
-                                    <li 
+                                    <li
                                       key={sub.name}
                                       className="text-sm text-base-content/70 hover:text-primary transition-colors"
                                     >
@@ -355,20 +356,17 @@ const Navbar = () => {
                     </Link>
                     <span className='w-0 group-hover:w-full h-0.5 bg-primary block transition-all duration-300'></span>
                   </li>
-                  <li className='group'>
-                    <Link to="/takim" className="hover:text-primary transition-colors">
-                      Takım
-                    </Link>
-                    <span className='w-0 group-hover:w-full h-0.5 bg-primary block transition-all duration-300'></span>
-                  </li>
+
                   <li className='group'>
                     <Link to="/iletisim" className="hover:text-primary transition-colors">
                       İletişim
                     </Link>
                     <span className='w-0 group-hover:w-full h-0.5 bg-primary block transition-all duration-300'></span>
                   </li>
+
                 </ul>
               </div>
+
 
               {/* Mobile Menu Button */}
               <div className="lg:hidden">
@@ -379,19 +377,23 @@ const Navbar = () => {
                 >
                   <div className="w-6 h-6 flex flex-col justify-center items-center">
                     <span className={`bg-current block transition-all duration-300 ease-out 
-                      h-0.5 w-6 rounded-sm ${isMenuOpen ? 
-                      'rotate-45 translate-y-1' : '-translate-y-0.5'
-                    }`} />
+                      h-0.5 w-6 rounded-sm ${isMenuOpen ?
+                        'rotate-45 translate-y-1' : '-translate-y-0.5'
+                      }`} />
                     <span className={`bg-current block transition-all duration-300 ease-out 
-                      h-0.5 w-6 rounded-sm my-0.5 ${isMenuOpen ? 
-                      'opacity-0' : 'opacity-100'
-                    }`} />
+                      h-0.5 w-6 rounded-sm my-0.5 ${isMenuOpen ?
+                        'opacity-0' : 'opacity-100'
+                      }`} />
                     <span className={`bg-current block transition-all duration-300 ease-out 
-                      h-0.5 w-6 rounded-sm ${isMenuOpen ? 
-                      '-rotate-45 -translate-y-1' : 'translate-y-0.5'
-                    }`} />
+                      h-0.5 w-6 rounded-sm ${isMenuOpen ?
+                        '-rotate-45 -translate-y-1' : 'translate-y-0.5'
+                      }`} />
                   </div>
                 </button>
+
+              </div>
+              <div className='md:ms-5 ms-2 h-6 w-6'>
+                <SunMoonIcon />
               </div>
             </div>
           </div>
@@ -400,16 +402,15 @@ const Navbar = () => {
         {/* Mobile Menu - Full Screen */}
         <div
           ref={menuRef}
-          className={`lg:hidden fixed inset-0 top-[64px] bg-base-100 transform transition-all duration-300 ease-in-out ${
-            isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0 pointer-events-none'
-          }`}
+          className={`lg:hidden fixed inset-0 top-[64px] bg-base-100 transform transition-all duration-300 ease-in-out ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0 pointer-events-none'
+            }`}
         >
           <div className="h-[calc(100vh-64px)] overflow-y-auto">
             <div className="container mx-auto ">
               <ul className="space-y-4 pb-8">
                 <li>
-                  <Link 
-                    to="/" 
+                  <Link
+                    to="/"
                     className="block p-4 text-lg font-medium hover:bg-base-200 rounded-lg transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -433,34 +434,33 @@ const Navbar = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
-                  
-                  <div className={`transition-all duration-300 ease-in-out space-y-4 mt-2 ${
-                    mobileServicesOpen ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
-                  }`}>
+
+                  <div className={`transition-all duration-300 ease-in-out space-y-4 mt-2 ${mobileServicesOpen ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+                    }`}>
                     {services.map((service) => (
                       <div key={service.title} className="bg-base-200/50 rounded-xl p-4 mx-4">
-                       <Link to={`/hizmetler${service.link}`}>
-                       <div
-                          to={`/hizmetler${service.link}`}
-                          className="flex items-center gap-3 mb-2"
-                        >
-                          <span className="text-primary">{service.icon}</span>
-                          <h3 className="text-lg font-semibold">{service.title}</h3>
-                        </div>
-                        <p className="text-base text-base-content/70">
-                          {service.description}
-                        </p>
-                        <ul className="mt-3 ml-6 space-y-2">
-                          {service.subServices.map((subService) => (
-                            <li 
-                              key={subService}
-                              className="text-base text-base-content/70 hover:text-primary transition-colors"
-                            >
-                              • {subService}
-                            </li>
-                          ))}
-                        </ul>
-                       </Link>
+                        <Link to={`/hizmetler${service.link}`}>
+                          <div
+                            to={`/hizmetler${service.link}`}
+                            className="flex items-center gap-3 mb-2"
+                          >
+                            <span className="text-primary">{service.icon}</span>
+                            <h3 className="text-lg font-semibold">{service.title}</h3>
+                          </div>
+                          <p className="text-base text-base-content/70">
+                            {service.description}
+                          </p>
+                          <ul className="mt-3 ml-6 space-y-2">
+                            {service.subServices.map((subService) => (
+                              <li
+                                key={subService}
+                                className="text-base text-base-content/70 hover:text-primary transition-colors"
+                              >
+                                • {subService}
+                              </li>
+                            ))}
+                          </ul>
+                        </Link>
                       </div>
                     ))}
                   </div>
@@ -482,10 +482,9 @@ const Navbar = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
-                  
-                  <div className={`transition-all duration-300 ease-in-out space-y-4 mt-2 ${
-                    mobileEducationOpen ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
-                  }`}>
+
+                  <div className={`transition-all duration-300 ease-in-out space-y-4 mt-2 ${mobileEducationOpen ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+                    }`}>
                     {education.map((edu) => (
                       <div key={edu.title} className="bg-base-200/50 rounded-xl p-4 mx-4">
                         <div className="flex items-center gap-3 mb-2">
@@ -497,7 +496,7 @@ const Navbar = () => {
                         </p>
                         <ul className="mt-3 ml-6 space-y-2">
                           {edu.subServices.map((sub) => (
-                            <li 
+                            <li
                               key={sub.name}
                               className="text-base text-base-content/70 hover:text-primary transition-colors"
                             >
@@ -511,8 +510,8 @@ const Navbar = () => {
                 </li>
 
                 <li>
-                  <Link 
-                    to="/projeler" 
+                  <Link
+                    to="/projeler"
                     className="block p-4 text-lg font-medium hover:bg-base-200 rounded-lg transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -520,8 +519,8 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link 
-                    to="/hakkimizda" 
+                  <Link
+                    to="/hakkimizda"
                     className="block p-4 text-lg font-medium hover:bg-base-200 rounded-lg transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -529,8 +528,8 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link 
-                    to="/iletisim" 
+                  <Link
+                    to="/iletisim"
                     className="block p-4 text-lg font-medium hover:bg-base-200 rounded-lg transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -542,12 +541,11 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Overlay for background when menu is open */}
-      <div 
-        className={`fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
-          isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`} 
+      <div
+        className={`fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
         onClick={() => setIsMenuOpen(false)}
       />
     </>

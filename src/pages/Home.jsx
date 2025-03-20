@@ -12,6 +12,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import SectionHead from '../components/SectionHead';
+import SunMoonIcon from '../components/SunMoon';
 
 const Home = () => {
   const [servicesRef, servicesInView] = useInView();
@@ -274,7 +275,6 @@ const Home = () => {
           ))}
         </Swiper>
       </div>
-
       {/* Services Section */}
       <section ref={servicesRef} className="py-20">
         <div className="container mx-auto px-4">
