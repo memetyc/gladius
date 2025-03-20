@@ -7,7 +7,7 @@ export const useInView = (options = {}) => {
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       setIsInView(entry.isIntersecting);
-    }, { threshold: 0.1, ...options });
+    }, { threshold: 0.05, ...options });
 
     const currentRef = ref.current;
     if (currentRef) {
