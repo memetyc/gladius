@@ -11,8 +11,8 @@ import { useInView } from '../hooks/useInView';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
 import SectionHead from '../components/SectionHead';
-import SunMoonIcon from '../components/SunMoon';
 
 const Home = () => {
   const [servicesRef, servicesInView] = useInView();
@@ -222,8 +222,9 @@ const Home = () => {
       {/* Hero Section with Swiper */}
       <div className="relative h-screen">
         <Swiper
-          modules={[Autoplay, Navigation, Pagination]}
+          modules={[Autoplay, EffectFade, Navigation, Pagination]}
           speed={1000}
+          effect="fade"
           autoplay={{
             delay: 5000,
             disableOnInteraction: false,
